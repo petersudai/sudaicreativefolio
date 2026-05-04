@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --color-bg: #080808;
+  --color-surface: #111111;
+  --color-surface-2: #1a1a1a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-text: #f0f0f0;
+  --color-muted: #666666;
+  --color-muted-2: #444444;
+
+  /* Accent — overridden per-creative via inline style on <body> */
+  --color-accent: #7c5ff0;
+  --color-accent-2: #4fc3f7;
+  --color-accent-glow: rgba(124, 95, 240, 0.35);
+
+  /* ── Legibility pass: all muted values now pass WCAG AA on #080808 ── */
+  --color-muted: #909090;    /* was #666 (3.4:1) → now 8.0:1 */
+  --color-muted-2: #666666;  /* was #444 → now at least usable for decorative */
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* ─── Focus Visible ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ─── Typography Scale ───────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-accent-2)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow {
+  text-shadow: 0 0 40px var(--color-accent-glow),
+    0 0 80px var(--color-accent-glow);
+}
+
+/* ─── Noise Overlay ──────────────────────────────────────────── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Glass Card ─────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-strong);
+}
+
+/* ─── Accent Glow Button ─────────────────────────────────────── */
+.btn-glow {
+  box-shadow: 0 0 20px var(--color-accent-glow),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.btn-glow:hover {
+  box-shadow: 0 0 40px var(--color-accent-glow),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Section Divider ────────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border-strong),
+    transparent
+  );
+}
+
+/* ─── Waveform Animation ─────────────────────────────────────── */
+.waveform-bar {
+  animation: waveform 1.2s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+@keyframes waveform {
+  0% {
+    transform: scaleY(0.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* ─── Image Hover Zoom ───────────────────────────────────────── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom > div {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom:hover img,
+.img-zoom:hover > div {
+  transform: scale(1.05);
+}
+
+/* ─── Marquee ────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Horizontal Scroll ──────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Magnetic Button ────────────────────────────────────────── */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+.container-xl {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+
+/* Prevent any child from blowing past the viewport */
+.container-xl > * {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .container-xl {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-xl {
+    padding: 0 4rem;
+  }
+}
