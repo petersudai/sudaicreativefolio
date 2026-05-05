@@ -102,7 +102,7 @@ const BENTO = [
     body: 'Fast, accessible, responsive. Works flawlessly on every device.',
     span: 'md:col-span-7',
     accent: '#7C5FF0',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
   },
 ];
 
@@ -127,7 +127,7 @@ const PROCESS = [
 const PRICING_TIERS = [
   {
     name: 'Starter',
-    price: '$499',
+    price: '$399',
     tagline: 'A clean, professional presence online.',
     note: 'One time payment',
     features: [
@@ -138,12 +138,12 @@ const PRICING_TIERS = [
       '14 day delivery',
     ],
     cta: 'Get started',
-    href: 'https://calendly.com/petersudai',
+    href: 'https://calendly.com/psudai',
     popular: false,
   },
   {
     name: 'Studio',
-    price: '$1,499',
+    price: '$799',
     tagline: 'The full creative portfolio experience.',
     note: 'Most popular',
     features: [
@@ -155,12 +155,12 @@ const PRICING_TIERS = [
       '21 day delivery',
     ],
     cta: 'Book a call',
-    href: 'https://calendly.com/petersudai',
+    href: 'https://calendly.com/psudai',
     popular: true,
   },
   {
     name: 'Signature',
-    price: '$2,999+',
+    price: '$999+',
     tagline: 'For those who want something truly distinct.',
     note: 'Custom quote',
     features: [
@@ -172,7 +172,7 @@ const PRICING_TIERS = [
       'Retainer available',
     ],
     cta: 'Let us talk',
-    href: 'mailto:hello@petersudai.com',
+    href: 'mailto:psudai@gmail.com',
     popular: false,
   },
 ];
@@ -180,7 +180,7 @@ const PRICING_TIERS = [
 const STATS = [
   { num: '12+', label: 'Sites launched' },
   { num: '<2wk', label: 'Average build' },
-  { num: '$499', label: 'Starting price' },
+  { num: '$399', label: 'Starting price' },
   { num: '100%', label: 'Custom built' },
 ];
 
@@ -375,7 +375,7 @@ export default function PeterSudaiPage() {
 
       {/* ── Floating CTA ── */}
       <motion.a
-        href="https://calendly.com/petersudai"
+        href="https://calendly.com/psudai"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold text-white shadow-xl"
@@ -417,7 +417,7 @@ export default function PeterSudaiPage() {
         </div>
 
         <motion.a
-          href="https://calendly.com/petersudai"
+          href="https://calendly.com/psudai"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm font-semibold px-4 py-2.5 md:px-5 md:py-3 rounded-full text-white"
@@ -435,7 +435,7 @@ export default function PeterSudaiPage() {
       </motion.nav>
 
       {/* ── Hero ── */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-[72px]">
         {/* Split background */}
         <div className="absolute inset-0 z-0 flex">
           <div className="w-1/2 relative overflow-hidden">
@@ -517,7 +517,7 @@ export default function PeterSudaiPage() {
             transition={{ duration: 0.6, delay: 1.0, ease }}
           >
             <motion.a
-              href="https://calendly.com/petersudai"
+              href="https://calendly.com/psudai"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 px-8 py-4 rounded-full font-semibold text-white text-sm w-full sm:w-auto justify-center"
@@ -537,21 +537,7 @@ export default function PeterSudaiPage() {
               See the work <ArrowRight size={15} />
             </motion.a>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll cue */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-        >
-          <motion.div
-            className="w-px h-14 rounded-full mx-auto"
-            style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), transparent)' }}
-            animate={{ scaleY: [0, 1, 0], originY: 0 }}
-            transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
-          />
         </motion.div>
       </section>
 
@@ -629,8 +615,8 @@ export default function PeterSudaiPage() {
                 {/* BG image (if any) */}
                 {card.image && (
                   <>
-                    <Image src={card.image} alt={card.label} fill className="object-cover object-center opacity-[0.12] group-hover:opacity-20 transition-opacity duration-500" sizes="(max-width: 768px) 100vw, 60vw" />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.95) 30%, rgba(8,8,8,0.5) 100%)' }} />
+                    <Image src={card.image} alt={card.label} fill className="object-cover object-center opacity-[0.38] group-hover:opacity-[0.55] transition-opacity duration-500" sizes="(max-width: 768px) 100vw, 60vw" />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.92) 20%, rgba(8,8,8,0.4) 70%, rgba(8,8,8,0.15) 100%)' }} />
                   </>
                 )}
 
@@ -691,9 +677,21 @@ export default function PeterSudaiPage() {
 
       {/* ── Process ── */}
       <section id="process" className="py-24 md:py-36 relative overflow-hidden" style={{ background: '#0b0b0b' }}>
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80"
+            alt=""
+            fill
+            className="object-cover object-center opacity-[0.07]"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0b0b0b 0%, rgba(11,11,11,0.6) 50%, #0b0b0b 100%)' }} />
+        </div>
+
         {/* Large decorative BG text */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-display font-black text-white/[0.015] select-none pointer-events-none leading-none whitespace-nowrap"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-display font-black text-white/[0.025] select-none pointer-events-none leading-none whitespace-nowrap z-[1]"
           aria-hidden="true"
         >
           PROCESS
@@ -893,20 +891,30 @@ export default function PeterSudaiPage() {
 
       {/* ── Contact ── */}
       <section id="contact" className="py-28 md:py-44 relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80"
+            alt=""
+            fill
+            className="object-cover object-center opacity-[0.05]"
+            sizes="100vw"
+          />
+        </div>
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124,95,240,0.07), transparent 60%)' }}
+          className="absolute inset-0 pointer-events-none z-[1]"
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124,95,240,0.1), transparent 60%)' }}
         />
         {/* Decorative large text */}
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 font-display font-black text-[18vw] text-white/[0.018] select-none pointer-events-none leading-none whitespace-nowrap"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 font-display font-black text-[12vw] text-white/[0.025] select-none pointer-events-none leading-none whitespace-nowrap z-[2]"
           aria-hidden="true"
         >
           LET'S WORK
         </div>
 
         <motion.div
-          className="container-xl text-center relative z-10"
+          className="container-xl text-center relative z-[3]"
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -922,7 +930,7 @@ export default function PeterSudaiPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <motion.a
-              href="https://calendly.com/petersudai"
+              href="https://calendly.com/psudai"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 px-10 py-4 rounded-full font-semibold text-white text-sm w-full sm:w-auto"
@@ -933,13 +941,13 @@ export default function PeterSudaiPage() {
               <CalendarDays size={15} /> Book a call
             </motion.a>
             <motion.a
-              href="mailto:hello@petersudai.com"
+              href="mailto:psudai@gmail.com"
               className="flex items-center justify-center gap-2.5 px-10 py-4 rounded-full font-semibold text-sm w-full sm:w-auto text-[#c0c0c0] hover:text-white transition-colors duration-300"
               style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.11)' }}
               whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.08)' }}
               whileTap={{ scale: 0.97 }}
             >
-              <Mail size={15} /> hello@petersudai.com
+              <Mail size={15} /> psudai@gmail.com
             </motion.a>
           </div>
         </motion.div>
